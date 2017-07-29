@@ -1,0 +1,66 @@
+.ul {
+    text-align: center;
+}
+.mylist {
+    display: inline; 
+    padding: 9px 12px 7px;
+    border-width: 0 1px 4px 1px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin-top: 0.5vh;
+    /* text-align: center; */
+}
+
+.mylist-default {
+    color: #555555;
+    background-color: #eeeeee;
+    border-color: #e2e2e2;
+}
+
+.mylist-default:focus,
+.mylist-default.focus {
+    color: #555555;
+    background-color: #d5d5d5;
+    border-color: #a2a2a2;
+}
+
+.mylist-default:hover {
+    color: #555555;
+    background-color: #d5d5d5;
+    border-color: #c3c3c3;
+}
+
+.mylist-default:active,
+.mylist-default.active {
+    color: #555555;
+    background-color: #d5d5d5;
+    border-color: #c3c3c3;
+}
+
+.mylist-success {
+    color: #ffffff;
+    background-color: #28b62c;
+    border-color: #23a127;
+}
+
+.mylist-success:focus,
+.mylist-success.focus {
+    color: #ffffff;
+    background-color: #1f8c22;
+    border-color: #0c390e;
+}
+
+.mylist-success:hover {
+    color: #ffffff;
+    background-color: #1f8c22;
+    border-color: #186f1b;
+}
+
+.mylist-success:active,
+.mylist-success.active {
+    color: #ffffff;
+    background-color: #1f8c22;
+    border-color: #186f1b;
+}
