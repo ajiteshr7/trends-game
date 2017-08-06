@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Game</title>
+    <!--        CDN   -->
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0-alpha.6/lumen/bootstrap.min.css">
+    
+    <!-- <link rel="stylesheet" href="../static/bootswatch-4.0.0-alpha.6/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/jquery-ui-1.12.1/jquery-ui.min.css"> -->
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/3dstyle.css">
+   <!-- <link rel="stylesheet" href="css/3dstyle.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="sortableApp">
+    <!--To display the current level of game-->
+    <div ng-controller = "connectedController">
+    <div ng-model = "level">
+      <h1> LEVEL {{level}}</h1>
+        <h3> arrange these {{size}} items to complete this level</h3>
+    </div>
+  <div class="box">
+  <div class="section row connectedItemsExample">
+    <div class="col-sm-offset-2 col-sm-6">
+      <ul ui-sortable="sortableOptions" ng-model="leftArray" class="list">
+        <li ng-repeat="item in leftArray" class="item">{{item.text}}</li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul ui-sortable="sortableOptions" ng-model="rightArray" class="list">
+        <li ng-repeat="item in rightArray" class="item">{{item.text}}</li>
+      </ul>
+    </div>
+     </div>
+     </div>
+   </div>
+        
+        <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>    
+        <script src="http://cdn.jsdelivr.net/g/jquery.ui@1.10%28jquery.ui.core.min.js+jquery.ui.widget.min.js+jquery.ui.mouse.min.js+jquery.ui.sortable.min.js%29"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.ui-sortable/0.17.1/sortable.min.js"></script>
+    
+    <!--       CDN ends -->
+    <!--            <script src="../static/jquery-ui-1.12.1/jquery-ui.js" ></script>-->
+    <!-- <script src="../static/jquery.min.js"></script>
+    <script src="../static/sortable.req.min.js"></script>
+    <script src="../static/angular.min.js"></script>
+    <script src="../static/angular_modules/sortable.min.js"></script> -->
+    <script src="demo.js"></script>
+</body>
+
+</html>
