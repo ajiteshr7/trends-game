@@ -114,12 +114,27 @@ myapp.controller('connectedController', function ($scope, $rootScope, $http, $wi
             $rootScope.rightArray=tmpList
            }
             else if($scope.level == "2")
-                $window.alert("congrats you have won the game")
+               {
+                   $window.alert("you completed level 2!!");
+                   $scope.size = 12;
+                   updateFunc($scope.size)
+                   console.log(tmpList)
+                   $scope.level = "3"
+                   $rootScope.leftArray = []
+                    $rootScope.rightArray=tmpList
+               }
+            else if($scope.level == "3")
+                {
+                    $window.alert("congrats you won the game")
+                }
         }
         if($rootScope.leftArray.length ===  $scope.size)
             {
                 if(!isSorted())
-                    $window.alert("wrong order try again")
+                   {$window.alert("wrong order try again")
+                    $rootScope.rightArray = $rootScope.leftArray
+                    $rootScope.leftArray = []
+                   }
             }
      },
          
