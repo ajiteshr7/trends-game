@@ -42,7 +42,7 @@ myapp.controller('connectedController', function ($scope, $rootScope, $http, $wi
             }
     //function to update list on reaching new levels
    var updateFunc = function(count){
-        for (var i=1; i <= 10; i++)
+        for (var i=1; i <= count; i++)
             {
                 tmpList.push({
                     text: ' ',
