@@ -1,4 +1,3 @@
-
 var myapp = angular.module('sortableApp', ['ui.sortable']);
 
 //controller function 
@@ -35,7 +34,7 @@ myapp.controller('connectedController', function ($scope, $rootScope, $http, $wi
            
             // random generated list
          
-            for (var i = 1; i < 8; i++) {
+            for (var i = 1; i <= 8; i++) {
                 tmpList.push({
                     text: ' ',
                     value: i
@@ -83,7 +82,7 @@ myapp.controller('connectedController', function ($scope, $rootScope, $http, $wi
   $rootScope.rightArray = tmpList;
     var isSorted = function(){
 
-       for(var i=0;i<tmpList.length;++i)
+       for(var i=0;i<$scope.size;++i)
      {
       if(i+1!==$rootScope.leftArray[i].value)
        return false;
