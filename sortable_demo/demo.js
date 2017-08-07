@@ -116,8 +116,11 @@ myapp.controller('connectedController', function ($scope, $rootScope, $http, $wi
             else if($scope.level == "2")
                 $window.alert("congrats you have won the game")
         }
-        //if(!isSorted())
-          //  $window.alert("sorry wrong ")
+        if($rootScope.leftArray.length ===  $scope.size)
+            {
+                if(!isSorted())
+                    $window.alert("wrong order try again")
+            }
      },
          
      connectWith: '.connectedItemsExample .list'
