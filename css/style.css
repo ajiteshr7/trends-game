@@ -1,11 +1,38 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700);
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
 body {
   text-align: center;
   background: #f7f7f7;
+  /* by footer height */
+  margin-bottom: 60px; 
 }
 
 .valign {
-    margin-top: 30vh;
+    margin-top: 20vh;
+}
+
+.foot-valign {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.heart {
+  color: #e25555;
 }
 
 .container-logo {
@@ -43,38 +70,41 @@ body {
 }
 
 .g:after {
-  content: "g";
+  content: "e";
   font-size: 140px;
     font-size: calc(110px - 0.1vw);
   color: #4285f4;
 }
 
 .o:after {
-  content: "o";
+  content: "T";
   font-size: 140px;
     font-size: calc(110px - 0.1vw);
   color: #ea4335;
 }
 
-.o:nth-of-type(3):after {
+.r:after {
+content: "r";
+font-size: 140px;
+font-size: calc(110px - 0.1vw);
   color: #fbbc05;
 }
 
 .l:after {
-  content: "l";
+  content: "n";
   font-size: 140px;
     font-size: calc(110px - 0.1vw);
   color: #34a853;
 }
 
 .e:after {
-  content: "e";
+  content: "d";
   font-size: 140px;
     font-size: calc(110px - 0.1vw);
   color: #ea4335;
 }
 
-.G:after, .o:after, .g:after, .e:after, .l:after {
+.G:after, .o:after, .r:after, .g:after, .e:after, .l:after {
   position: absolute;
   left: 0;
   top: 0px;

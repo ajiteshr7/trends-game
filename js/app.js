@@ -5,11 +5,6 @@
     angular.module('gameApp', ['ui.sortable'])
         .controller('ListController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
             var data = [];
-            var setData = function (data) {
-                for(var i = 0;i < tmpList.length; ++i)
-                    tmpList[i].text = data[tmpList[i].value - 1];
-            }
-
             $http({
                 method: 'GET',
                 url: 'https://trends.google.com/trends/hottrends/visualize/internal/data'
@@ -23,6 +18,12 @@
                 // or server returns response with an error status.
                 console.log(response, 'cant get data.');
             });
+
+            var setData = function (data) {
+                for (var i = 0; i < tmpList.length; ++i)
+                    tmpList[i].text = data[tmpList[i].value - 1];
+            }
+
             $scope.items = [];
             var tmpList = [];
             // random generated list
@@ -33,17 +34,18 @@
                 });
             }
 
-            var m = tmpList.length,
-                t, i;
-            // While there remain elements to shuffle…
-            while (m) {
-                // Pick a remaining element…
-                i = Math.floor(Math.random() * m--);
+            var shuffleList = function(){
+                var m = tmpList.length, t, i;
+                // While there remain elements to shuffle…
+                while (m) {
+                    // Pick a remaining element…
+                    i = Math.floor(Math.random() * m--);
 
-                // And swap it with the current element.
-                t = tmpList[m];
-                tmpList[m] = tmpList[i];
-                tmpList[i] = t;
+                    // And swap it with the current element.
+                    t = tmpList[m];
+                    tmpList[m] = tmpList[i];
+                    tmpList[i] = t;
+                }
             }
 
             // To check is list sorted
@@ -60,31 +62,19 @@
             $scope.items = tmpList;
 
             $scope.sortableOptions = {
-
-                // update: function (e, ui) {
-                //     //                    var logEntry = tmpList.map(function(i){
-                //     //                        return i.value;
-                //     //                    }).join(', ');
-                //     //                    console.log('Update: ' + logEntry);
-                //     // console.log({
-                //     //     'tmpList': tmpList,
-                //     //     'scopelist': $scope.items
-                //     // })
-                //     // console.log(isSorted(tmpList));
-                // },
                 stop: function (e, ui) {
-                    var test = {
-                        'e': e,
-                        'ui': ui
-                    }
-                    var logEntry = tmpList.map(function (i) {
-                        return i.value;
-                    }).join(', ');
-                    console.log('Change: ' + logEntry);
-                    console.log(isSorted());
-                    if(isSorted())
-                        $window.alert("You Won!");
-                    //                    console.log(test);
+                        // var test = {
+                        //     'e': e,
+                        //     'ui': ui
+                        // }
+                        // var logEntry = tmpList.map(function (i) {
+                        //     return i.value;
+                        // }).join(', ');
+                        // console.log('Change: ' + logEntry);
+                        // console.log(isSorted());
+                        if(isSorted())
+                            $window.alert("You got it right!");
+                        // console.log(test);
                 }
             };
         }]);
