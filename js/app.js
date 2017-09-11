@@ -21,6 +21,8 @@
             var setData = function (data) {
                 for (var i = 0; i < tmpList.length; ++i)
                     tmpList[i].text = data[tmpList[i].value - 1];
+                // Now shuffle the list
+                shuffleList();
             }
 
             $scope.items = [];
