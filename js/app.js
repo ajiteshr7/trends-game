@@ -3,27 +3,20 @@
     'use strict';
 
     angular.module('gameApp', ['ui.sortable'])
-        .controller('ListController', ['$scope', '$http', '$window', '$sce', function ($scope, $http, $window, $sce) {
-            var data = [];
-        
-            $http.get('https://cors-anywhere.herokuapp.com/https://trends.google.com/trends/hottrends/visualize/internal/data')
-            .then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
-                // console.log(response.data.india);
-                setData(response.data.india);
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                console.log(response, 'cant get data.');
-            });
+        .controller('ListController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
-            var setData = function (data) {
-                for (var i = 0; i < tmpList.length; ++i)
-                    tmpList[i].text = data[tmpList[i].value - 1];
-                // Now shuffle the list
-                shuffleList();
-            }
+            // Get the data
+            // Using cors-anywhere to get past the cors headers issue
+            $http.get('https://cors-anywhere.herokuapp.com/https://trends.google.com/trends/hottrends/visualize/internal/data')
+                .then(function successCallback(response) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    setData(response.data.india);
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    console.log(response, "can't get the data!");
+                });
 
             $scope.items = [];
             var tmpList = [];
@@ -35,8 +28,17 @@
                 });
             }
 
-            var shuffleList = function(){
-                var m = tmpList.length, t, i;
+            var setData = function (data) {
+                for (var i = 0; i < tmpList.length; ++i)
+                    tmpList[i].text = data[tmpList[i].value - 1];
+                // Now shuffle the list
+                shuffleList();
+            }
+
+            // shuffles up the list
+            var shuffleList = function () {
+                var m = tmpList.length,
+                    t, i;
                 // While there remain elements to shuffle…
                 while (m) {
                     // Pick a remaining element…
@@ -53,7 +55,6 @@
             var isSorted = function () {
                 for (var i = 0; i < tmpList.length; ++i) {
                     if (i + 1 !== tmpList[i].value) {
-                        // console.log('Not equal: ', i+1, '& ', tmpList);
                         return false;
                     }
                 }
@@ -64,18 +65,8 @@
 
             $scope.sortableOptions = {
                 stop: function (e, ui) {
-                        // var test = {
-                        //     'e': e,
-                        //     'ui': ui
-                        // }
-                        // var logEntry = tmpList.map(function (i) {
-                        //     return i.value;
-                        // }).join(', ');
-                        // console.log('Change: ' + logEntry);
-                        // console.log(isSorted());
-                        if(isSorted())
-                            $window.alert("You got it right!");
-                        // console.log(test);
+                    if (isSorted())
+                        $window.alert("Awesome!!, you got it right!");
                 }
             };
         }]);
